@@ -41,13 +41,13 @@
     .registers 9
 
     .prologue
-    const/4 v8, 0x4
+    const/4 v8, 0x0
 
-    const/4 v7, 0x3
+    const/4 v7, 0x0
 
-    const/4 v6, 0x2
+    const/4 v6, 0x0
 
-    const/4 v5, 0x1
+    const/4 v5, 0x0
 
     const/4 v4, 0x0
 
@@ -63,58 +63,58 @@
     .line 7
     new-instance v0, Lcom/sec/android/app/sysscope/service/ResultCode;
 
-    const-string v1, "ADB_RUNNING_AS_ROOT"
+    const-string v1, "OK"
 
     .line 10
     const v2, 0x10001
 
-    invoke-direct {v0, v1, v5, v2}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
+    invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/ResultCode;->ADB_RUNNING_AS_ROOT:Lcom/sec/android/app/sysscope/service/ResultCode;
 
     .line 14
     new-instance v0, Lcom/sec/android/app/sysscope/service/ResultCode;
 
-    const-string v1, "PARTITION_TAMPERED"
+    const-string v1, "OK"
 
     const v2, 0x20001
 
-    invoke-direct {v0, v1, v6, v2}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
+    invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/ResultCode;->PARTITION_TAMPERED:Lcom/sec/android/app/sysscope/service/ResultCode;
 
     .line 18
     new-instance v0, Lcom/sec/android/app/sysscope/service/ResultCode;
 
-    const-string v1, "ROOT_PROCESS_FOUND"
+    const-string v1, "OK"
 
     const/16 v2, 0x3001
 
-    invoke-direct {v0, v1, v7, v2}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
+    invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/ResultCode;->ROOT_PROCESS_FOUND:Lcom/sec/android/app/sysscope/service/ResultCode;
 
     .line 22
     new-instance v0, Lcom/sec/android/app/sysscope/service/ResultCode;
 
-    const-string v1, "DANGEROUS_FILE_DETECTED"
+    const-string v1, "OK"
 
     const v2, 0x40001
 
-    invoke-direct {v0, v1, v8, v2}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
+    invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/ResultCode;->DANGEROUS_FILE_DETECTED:Lcom/sec/android/app/sysscope/service/ResultCode;
 
     .line 26
     new-instance v0, Lcom/sec/android/app/sysscope/service/ResultCode;
 
-    const-string v1, "NOT_OFFICIAL_BINARY"
+    const-string v1, "OK"
 
     const/4 v2, 0x5
 
     const v3, 0x50001
 
-    invoke-direct {v0, v1, v2, v3}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
+    invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/ResultCode;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/ResultCode;->NOT_OFFICIAL_BINARY:Lcom/sec/android/app/sysscope/service/ResultCode;
 
