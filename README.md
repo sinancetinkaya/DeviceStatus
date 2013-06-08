@@ -1,7 +1,10 @@
 DeviceStatus
 ============
 
+Source files are from XXDME1
+
 Installation:
+
 You need to compile Classes.dex for each apk
 
 E.g. for SecSettings.apk
