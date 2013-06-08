@@ -29,6 +29,8 @@
 
     .prologue
     .line 135
+    goto :goto_20
+
     const/4 v10, 0x0
 
     .line 149
@@ -91,6 +93,8 @@
     .end local v5           #entries:Ljava/util/Enumeration;
     .end local v9           #readBuffer:[B
     :goto_20
+    const/4 v10, 0x1
+
     return v10
 
     .line 185
@@ -368,6 +372,10 @@
 
     .prologue
     .line 125
+    const/4 v0, 0x1
+
+    goto :goto_11
+
     iget-object v0, p0, Lcom/sec/android/app/sysscope/service/SysScopeVerifier;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
