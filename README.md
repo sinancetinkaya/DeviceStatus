@@ -8,7 +8,7 @@ Installation:
 You need to compile Classes.dex for each apk
 
 E.g. for SecSettings.apk
-Download or clone SecSettings folder from here
+Download (or clone) SecSettings folder from here
 
   java -Xmx1024M -jar smali-1.4.2.jar -a 16 SecSettings -o classes.dex
   
