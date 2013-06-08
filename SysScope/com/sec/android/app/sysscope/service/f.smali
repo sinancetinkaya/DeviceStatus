@@ -28,13 +28,13 @@
 .method static constructor <clinit>()V
     .registers 9
 
-    const/4 v8, 0x0
+    const/4 v8, 0x4
 
-    const/4 v7, 0x0
+    const/4 v7, 0x3
 
-    const/4 v6, 0x0
+    const/4 v6, 0x2
 
-    const/4 v5, 0x0
+    const/4 v5, 0x1
 
     const/4 v4, 0x0
 
@@ -50,8 +50,6 @@
 
     const-string v1, "OK"
 
-    const v2, 0x10001
-
     invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/f;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/f;->b:Lcom/sec/android/app/sysscope/service/f;
@@ -59,8 +57,6 @@
     new-instance v0, Lcom/sec/android/app/sysscope/service/f;
 
     const-string v1, "OK"
-
-    const v2, 0x20001
 
     invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/f;-><init>(Ljava/lang/String;II)V
 
@@ -70,8 +66,6 @@
 
     const-string v1, "OK"
 
-    const/16 v2, 0x3001
-
     invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/f;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/f;->d:Lcom/sec/android/app/sysscope/service/f;
@@ -80,8 +74,6 @@
 
     const-string v1, "OK"
 
-    const v2, 0x40001
-
     invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/f;-><init>(Ljava/lang/String;II)V
 
     sput-object v0, Lcom/sec/android/app/sysscope/service/f;->e:Lcom/sec/android/app/sysscope/service/f;
@@ -89,10 +81,6 @@
     new-instance v0, Lcom/sec/android/app/sysscope/service/f;
 
     const-string v1, "OK"
-
-    const/4 v2, 0x5
-
-    const v3, 0x50001
 
     invoke-direct {v0, v1, v4, v4}, Lcom/sec/android/app/sysscope/service/f;-><init>(Ljava/lang/String;II)V
 
