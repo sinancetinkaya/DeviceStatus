@@ -29,6 +29,8 @@
 
     .prologue
     .line 72
+    goto :goto_ed
+
     const/16 v20, 0x0
 
     .line 73
@@ -361,6 +363,10 @@
     .end local v24           #strValue:[Ljava/lang/String;
     .local v21, retValue:I
     :goto_ed
+    const/16 v20, 0x1
+
+    move/from16 v21, v20
+
     return v21
 
     .line 99
@@ -1387,6 +1393,10 @@
 
     .prologue
     .line 67
+    const/4 v0, 0x1
+
+    goto :goto_11
+
     iget-object v0, p0, Lcom/sec/android/app/sysscope/service/SysScopeVerifier;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
