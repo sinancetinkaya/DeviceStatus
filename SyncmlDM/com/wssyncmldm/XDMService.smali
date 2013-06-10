@@ -774,118 +774,22 @@
 .end method
 
 .method public static xdmCheckSystemRooting()I
-    .registers 5
+    .registers 1
 
     .prologue
-    const/4 v4, -0x1
+    const/4 v0, 0x0
 
-    .line 1775
-    new-instance v2, Lcom/sec/android/app/sysscope/service/SysScope;
-
-    invoke-static {}, Lcom/wssyncmldm/XDMApplication;->xdmGetContext()Landroid/content/Context;
-
-    move-result-object v3
-
-    invoke-direct {v2, v3}, Lcom/sec/android/app/sysscope/service/SysScope;-><init>(Landroid/content/Context;)V
-
-    .line 1776
-    .local v2, sysScope:Lcom/sec/android/app/sysscope/service/SysScope;
-    const/4 v1, -0x1
-
-    .line 1778
-    .local v1, isSysScopeStatus:I
-    invoke-virtual {v2}, Lcom/sec/android/app/sysscope/service/SysScope;->isConnected()Z
-
-    move-result v3
-
-    if-nez v3, :cond_1b
-
-    .line 1780
-    sput v4, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
-
-    .line 1781
-    const-string v3, "Device is not connecting... try later"
-
-    invoke-static {v3}, Lcom/wssyncmldm/agent/XDMDebug;->XDM_DEBUG_EXCEPTION(Ljava/lang/String;)V
-
-    .line 1811
-    :goto_18
-    sget v3, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
-
-    return v3
-
-    .line 1787
-    :cond_1b
-    :try_start_1b
-    invoke-virtual {v2}, Lcom/sec/android/app/sysscope/service/SysScope;->getLastScanResult()Lcom/sec/android/app/sysscope/service/SysScopeResultInfo;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Lcom/sec/android/app/sysscope/service/SysScopeResultInfo;->getResult()I
-    :try_end_22
-    .catch Ljava/lang/Exception; {:try_start_1b .. :try_end_22} :catch_2f
-
-    move-result v1
-
-    .line 1794
-    :goto_23
-    const/4 v3, 0x2
-
-    if-ne v1, v3, :cond_38
-
-    .line 1796
-    const/4 v3, 0x1
-
-    sput v3, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
-
-    .line 1797
-    const-string v3, "Device is modified. can not use wssyncmldm"
-
-    invoke-static {v3}, Lcom/wssyncmldm/agent/XDMDebug;->XDM_DEBUG_EXCEPTION(Ljava/lang/String;)V
-
-    goto :goto_18
-
-    .line 1789
-    :catch_2f
-    move-exception v0
-
-    .line 1791
-    .local v0, e:Ljava/lang/Exception;
-    invoke-virtual {v0}, Ljava/lang/Exception;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v3}, Lcom/wssyncmldm/agent/XDMDebug;->XDM_DEBUG_EXCEPTION(Ljava/lang/String;)V
-
-    goto :goto_23
-
-    .line 1799
-    .end local v0           #e:Ljava/lang/Exception;
-    :cond_38
-    if-ne v1, v4, :cond_42
-
-    .line 1801
-    sput v4, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
-
-    .line 1802
-    const-string v3, "Device is scanning... try later"
-
-    invoke-static {v3}, Lcom/wssyncmldm/agent/XDMDebug;->XDM_DEBUG_EXCEPTION(Ljava/lang/String;)V
-
-    goto :goto_18
-
-    .line 1806
-    :cond_42
-    const/4 v3, 0x0
-
-    sput v3, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
+    sput v0, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
 
     .line 1807
-    const-string v3, "Device is ok"
+    const-string v0, "Device is ok"
 
-    invoke-static {v3}, Lcom/wssyncmldm/agent/XDMDebug;->XDM_DEBUG_EXCEPTION(Ljava/lang/String;)V
+    invoke-static {v0}, Lcom/wssyncmldm/agent/XDMDebug;->XDM_DEBUG_EXCEPTION(Ljava/lang/String;)V
 
-    goto :goto_18
+    sget v0, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
+
+    return v0
+
 .end method
 
 .method public static xdmGetAccountRegistration(Landroid/content/Context;)Z
