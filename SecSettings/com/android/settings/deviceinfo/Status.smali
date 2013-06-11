@@ -52,6 +52,8 @@
 
 .field private mSvcModeMessenger:Landroid/os/Messenger;
 
+.field private mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
+
 .field private mSysScopeReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mTelephonyManager:Landroid/telephony/TelephonyManager;
@@ -532,6 +534,11 @@
     .registers 8
 
     .prologue
+    const-wide/16 v3, 0x3e8
+
+    const v6, 0x7f090124
+
+    const/4 v5, -0x1
 
     .line 834
     const-string v0, "sysscope_status"
@@ -540,21 +547,121 @@
 
     move-result-object v2
 
-    .line 854
-    iget v0, p0, Lcom/android/settings/deviceinfo/Status;->isSysScopeStatus:I
+    .line 836
+    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    .line 857
-    const v0, 0x7f090123
+    move-result-wide v0
 
-    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
+    div-long/2addr v0, v3
+
+    .line 837
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+
+    move-result-wide v0
+
+    div-long/2addr v0, v3
+
+    .line 839
+    const-wide/16 v3, 0x0
+
+    cmp-long v3, v0, v3
+
+    if-nez v3, :cond_1e
+
+    .line 840
+    const-wide/16 v0, 0x1
+
+    .line 843
+    :cond_1e
+    iget-object v3, p0, Lcom/android/settings/deviceinfo/Status;->mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
+
+    invoke-virtual {v3}, Lcom/sec/android/app/sysscope/service/SysScope;->isConnected()Z
+
+    move-result v3
+
+    if-nez v3, :cond_34
+
+    const-wide/16 v3, 0x78
+
+    cmp-long v0, v0, v3
+
+    if-lez v0, :cond_34
+
+    .line 844
+    invoke-virtual {p0, v6}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
 
     move-result-object v0
 
+    .line 861
+    :goto_30
     invoke-virtual {v2, v0}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
 
     .line 862
     return-void
 
+    .line 847
+    :cond_34
+    :try_start_34
+    iget-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
+
+    invoke-virtual {v0}, Lcom/sec/android/app/sysscope/service/SysScope;->getLastScanResult()Lcom/sec/android/app/sysscope/service/SysScopeResultInfo;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/sec/android/app/sysscope/service/SysScopeResultInfo;->getResult()I
+
+    move-result v0
+
+    iput v0, p0, Lcom/android/settings/deviceinfo/Status;->isSysScopeStatus:I
+    :try_end_40
+    .catch Ljava/lang/Exception; {:try_start_34 .. :try_end_40} :catch_4a
+
+    .line 852
+    :goto_40
+    iget v0, p0, Lcom/android/settings/deviceinfo/Status;->isSysScopeStatus:I
+
+    const/4 v1, 0x2
+
+    if-ne v0, v1, :cond_4e
+
+    .line 853
+    invoke-virtual {p0, v6}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_30
+
+    .line 848
+    :catch_4a
+    move-exception v0
+
+    .line 849
+    iput v5, p0, Lcom/android/settings/deviceinfo/Status;->isSysScopeStatus:I
+
+    goto :goto_40
+
+    .line 854
+    :cond_4e
+    iget v0, p0, Lcom/android/settings/deviceinfo/Status;->isSysScopeStatus:I
+
+    if-ne v0, v5, :cond_5a
+
+    .line 855
+    const v0, 0x7f090125
+
+    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_30
+
+    .line 857
+    :cond_5a
+    const v0, 0x7f090123
+
+    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
 
     goto :goto_30
 .end method
