@@ -22,8 +22,6 @@
 # instance fields
 .field private NAI_length:I
 
-.field private isSysScopeStatus:I
-
 .field private mBatteryInfoReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mBatteryLevel:Landroid/preference/Preference;
@@ -51,8 +49,6 @@
 .field private mSignalStrength:Landroid/preference/Preference;
 
 .field private mSvcModeMessenger:Landroid/os/Messenger;
-
-.field private mSysScopeReceiver:Landroid/content/BroadcastReceiver;
 
 .field private mTelephonyManager:Landroid/telephony/TelephonyManager;
 
@@ -265,8 +261,6 @@
 
     invoke-direct {v0, p0}, Lcom/android/settings/deviceinfo/Status$2;-><init>(Lcom/android/settings/deviceinfo/Status;)V
 
-    iput-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mSysScopeReceiver:Landroid/content/BroadcastReceiver;
-
     .line 258
     new-instance v0, Lcom/android/settings/deviceinfo/Status$3;
 
@@ -433,8 +427,6 @@
     .parameter "x0"
 
     .prologue
-    .line 100
-    invoke-direct {p0}, Lcom/android/settings/deviceinfo/Status;->changeSysScopeStatus()V
 
     return-void
 .end method
@@ -528,6 +520,8 @@
     return p1
 .end method
 
+<<<<<<< HEAD
+=======
 .method private changeSysScopeStatus()V
     .registers 2
 
@@ -555,6 +549,7 @@
     .line 862
     return-void
 .end method
+>>>>>>> aa7a593f950b050d2954b70fb7230159dd5f2471
 
 .method private connectToRilService()V
     .registers 4
@@ -1731,36 +1726,6 @@
     return-void
 .end method
 
-.method private setSysScopeStatus()V
-    .registers 3
-
-    .prologue
-    .line 828
-    const-string v0, "sysscope_status"
-
-    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
-
-    move-result-object v0
-
-    .line 829
-    const v1, 0x7f090125
-
-    invoke-virtual {p0, v1}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-
-    .line 830
-    new-instance v0, Lcom/sec/android/app/sysscope/service/SysScope;
-
-    invoke-direct {v0, p0}, Lcom/sec/android/app/sysscope/service/SysScope;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
-
-    .line 831
-    return-void
-.end method
 
 .method private setWifiStatus()V
     .registers 6
@@ -2807,9 +2772,6 @@
     .line 505
     invoke-direct {p0}, Lcom/android/settings/deviceinfo/Status;->setIpAddressStatus()V
 
-    .line 508
-    invoke-direct {p0}, Lcom/android/settings/deviceinfo/Status;->setSysScopeStatus()V
-
     .line 511
     const-string v11, "ril.serialnumber"
 
@@ -3374,11 +3336,6 @@
 
     invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 611
-    iget-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mSysScopeReceiver:Landroid/content/BroadcastReceiver;
-
-    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
-
     .line 613
     iget-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mHandler:Landroid/os/Handler;
 
@@ -3453,20 +3410,6 @@
     invoke-direct {v1, v2}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
     invoke-virtual {p0, v0, v1}, Lcom/android/settings/deviceinfo/Status;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-
-    .line 584
-    iget-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mSysScopeReceiver:Landroid/content/BroadcastReceiver;
-
-    new-instance v1, Landroid/content/IntentFilter;
-
-    const-string v2, "com.sec.intent.action.SYSSCOPESTATUS"
-
-    invoke-direct {v1, v2}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {p0, v0, v1}, Lcom/android/settings/deviceinfo/Status;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-
-    .line 585
-    invoke-direct {p0}, Lcom/android/settings/deviceinfo/Status;->changeSysScopeStatus()V
 
     .line 592
     iget-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mHandler:Landroid/os/Handler;
