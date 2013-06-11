@@ -529,7 +529,7 @@
 .end method
 
 .method private changeSysScopeStatus()V
-    .registers 8
+    .registers 2
 
     .prologue
 
@@ -554,9 +554,6 @@
 
     .line 862
     return-void
-
-
-    goto :goto_30
 .end method
 
 .method private connectToRilService()V
