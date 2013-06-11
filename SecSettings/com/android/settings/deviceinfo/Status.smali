@@ -256,11 +256,6 @@
 
     iput-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mBatteryInfoReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 244
-    new-instance v0, Lcom/android/settings/deviceinfo/Status$2;
-
-    invoke-direct {v0, p0}, Lcom/android/settings/deviceinfo/Status$2;-><init>(Lcom/android/settings/deviceinfo/Status;)V
-
     .line 258
     new-instance v0, Lcom/android/settings/deviceinfo/Status$3;
 
@@ -422,15 +417,6 @@
     return-object v0
 .end method
 
-.method static synthetic access$400(Lcom/android/settings/deviceinfo/Status;)V
-    .registers 1
-    .parameter "x0"
-
-    .prologue
-
-    return-void
-.end method
-
 .method static synthetic access$500(Lcom/android/settings/deviceinfo/Status;)V
     .registers 1
     .parameter "x0"
@@ -518,6 +504,31 @@
     iput p1, p0, Lcom/android/settings/deviceinfo/Status;->NAI_length:I
 
     return p1
+.end method
+
+.method private changeSysScopeStatus()V
+    .registers 4
+
+    .prologue
+    const v1, 0x7f090123
+
+    .line 834
+    const-string v0, "sysscope_status"
+
+    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v2
+
+    .line 836
+    invoke-virtual {p0, v1}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 861
+    invoke-virtual {v2, v0}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+
+    .line 862
+    return-void
 .end method
 
 .method private connectToRilService()V
@@ -1695,6 +1706,29 @@
     return-void
 .end method
 
+.method private setSysScopeStatus()V
+    .registers 3
+
+    .prologue
+    .line 828
+    const-string v0, "sysscope_status"
+
+    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v0
+
+    .line 829
+    const v1, 0x7f090123
+
+    invoke-virtual {p0, v1}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+
+    .line 831
+    return-void
+.end method
 
 .method private setWifiStatus()V
     .registers 6
@@ -2741,6 +2775,8 @@
     .line 505
     invoke-direct {p0}, Lcom/android/settings/deviceinfo/Status;->setIpAddressStatus()V
 
+    invoke-direct {p0}, Lcom/android/settings/deviceinfo/Status;->setSysScopeStatus()V
+
     .line 511
     const-string v11, "ril.serialnumber"
 
@@ -3381,6 +3417,8 @@
     invoke-virtual {p0, v0, v1}, Lcom/android/settings/deviceinfo/Status;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     .line 592
+    invoke-direct {p0}, Lcom/android/settings/deviceinfo/Status;->changeSysScopeStatus()V
+
     iget-object v0, p0, Lcom/android/settings/deviceinfo/Status;->mHandler:Landroid/os/Handler;
 
     const/16 v1, 0x1f4
