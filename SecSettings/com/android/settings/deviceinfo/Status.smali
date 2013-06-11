@@ -520,37 +520,6 @@
     return p1
 .end method
 
-<<<<<<< HEAD
-.method private changeSysScopeStatus()V
-    .registers 2
-
-    .prologue
-
-    .line 834
-    const-string v0, "sysscope_status"
-
-    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
-
-    move-result-object v2
-
-    .line 854
-    iget v0, p0, Lcom/android/settings/deviceinfo/Status;->isSysScopeStatus:I
-
-    .line 857
-    const v0, 0x7f090123
-
-    invoke-virtual {p0, v0}, Lcom/android/settings/deviceinfo/Status;->getString(I)Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {v2, v0}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
-
-    .line 862
-    return-void
-.end method
-=======
->>>>>>> SysScope Cleanup
-
 .method private connectToRilService()V
     .registers 4
 
