@@ -1332,17 +1332,6 @@
     .line 198
     iget-object v0, p0, Lcom/sec/factory/cporiented/AtParserCPO;->atHandlers:Ljava/util/HashMap;
 
-    const-string v1, "84"
-
-    new-instance v2, Lcom/sec/factory/aporiented/athandler/AtSysscope;
-
-    invoke-direct {v2, p1, p2}, Lcom/sec/factory/aporiented/athandler/AtSysscope;-><init>(Landroid/content/Context;Lcom/sec/factory/cporiented/ResponseWriterCPO;)V
-
-    invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 199
-    iget-object v0, p0, Lcom/sec/factory/cporiented/AtParserCPO;->atHandlers:Ljava/util/HashMap;
-
     const-string v1, "8A"
 
     new-instance v2, Lcom/sec/factory/aporiented/athandler/AtSensorHb;

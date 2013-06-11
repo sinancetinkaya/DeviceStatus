@@ -48,11 +48,9 @@
 
 .field private intentTimer:Landroid/os/Handler;
 
-.field private isSysScopeStatus:I
 
 .field public mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-.field private mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
 
 .field private out:Ljava/io/OutputStream;
 
@@ -202,18 +200,6 @@
     return-object v0
 .end method
 
-.method static synthetic access$1000(Lcom/sec/bcservice/BroadcastService;)Ljava/lang/String;
-    .registers 2
-    .parameter "x0"
-
-    .prologue
-    .line 49
-    invoke-direct {p0}, Lcom/sec/bcservice/BroadcastService;->getSysScopeStatus()Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
 
 .method static synthetic access$102(Lcom/sec/bcservice/BroadcastService;Landroid/net/LocalSocket;)Landroid/net/LocalSocket;
     .registers 2
@@ -722,194 +708,12 @@
     goto :goto_75
 .end method
 
-.method private getSysScopeStatus()Ljava/lang/String;
-    .registers 11
-
-    .prologue
-    const v9, 0x7f030004
-
-    const/4 v8, -0x1
-
-    .line 548
-    const/4 v1, 0x0
-
-    .line 549
-    .local v1, status:Ljava/lang/String;
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
-
-    move-result-wide v4
-
-    const-wide/16 v6, 0x3e8
-
-    div-long v2, v4, v6
-
-    .line 551
-    .local v2, ut:J
-    const-wide/16 v4, 0x0
-
-    cmp-long v4, v2, v4
-
-    if-nez v4, :cond_15
-
-    .line 552
-    const-wide/16 v2, 0x1
-
-    .line 555
-    :cond_15
-    iget-object v4, p0, Lcom/sec/bcservice/BroadcastService;->mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
-
-    invoke-virtual {v4}, Lcom/sec/android/app/sysscope/service/SysScope;->isConnected()Z
-
-    move-result v4
-
-    if-nez v4, :cond_40
-
-    const-wide/16 v4, 0x78
-
-    cmp-long v4, v2, v4
-
-    if-lez v4, :cond_40
-
-    .line 556
-    invoke-virtual {p0, v9}, Lcom/sec/bcservice/BroadcastService;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    .line 574
-    :goto_27
-    const-string v4, "BCService"
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "Status: "
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 575
-    return-object v1
-
-    .line 559
-    :cond_40
-    :try_start_40
-    iget-object v4, p0, Lcom/sec/bcservice/BroadcastService;->mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
-
-    invoke-virtual {v4}, Lcom/sec/android/app/sysscope/service/SysScope;->getLastScanResult()Lcom/sec/android/app/sysscope/service/SysScopeResultInfo;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Lcom/sec/android/app/sysscope/service/SysScopeResultInfo;->getResult()I
-
-    move-result v4
-
-    iput v4, p0, Lcom/sec/bcservice/BroadcastService;->isSysScopeStatus:I
-    :try_end_4c
-    .catch Ljava/lang/Exception; {:try_start_40 .. :try_end_4c} :catch_56
-
-    .line 565
-    :goto_4c
-    iget v4, p0, Lcom/sec/bcservice/BroadcastService;->isSysScopeStatus:I
-
-    const/4 v5, 0x2
-
-    if-ne v4, v5, :cond_76
-
-    .line 566
-    invoke-virtual {p0, v9}, Lcom/sec/bcservice/BroadcastService;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    goto :goto_27
-
-    .line 560
-    :catch_56
-    move-exception v0
-
-    .line 561
-    .local v0, e:Ljava/lang/Exception;
-    iput v8, p0, Lcom/sec/bcservice/BroadcastService;->isSysScopeStatus:I
-
-    .line 562
-    const-string v4, "BCService"
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v6, "Exception occurred: "
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v0}, Ljava/lang/Exception;->toString()Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_4c
-
-    .line 567
-    .end local v0           #e:Ljava/lang/Exception;
-    :cond_76
-    iget v4, p0, Lcom/sec/bcservice/BroadcastService;->isSysScopeStatus:I
-
-    if-ne v4, v8, :cond_82
-
-    .line 568
-    const v4, 0x7f030005
-
-    invoke-virtual {p0, v4}, Lcom/sec/bcservice/BroadcastService;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    goto :goto_27
-
-    .line 570
-    :cond_82
-    const v4, 0x7f030003
-
-    invoke-virtual {p0, v4}, Lcom/sec/bcservice/BroadcastService;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    goto :goto_27
-.end method
 
 .method private initCommandMap()V
     .registers 4
 
     .prologue
     .line 599
-    iget-object v0, p0, Lcom/sec/bcservice/BroadcastService;->commandMap:Ljava/util/HashMap;
-
-    const-string v1, "SYSSCOPE"
-
-    const-string v2, "AT+SYSSCOPE"
-
-    invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 600
     iget-object v0, p0, Lcom/sec/bcservice/BroadcastService;->commandMap:Ljava/util/HashMap;
@@ -978,33 +782,6 @@
     return-void
 .end method
 
-.method private startSysScopeStatue()V
-    .registers 3
-
-    .prologue
-    .line 474
-    new-instance v0, Lcom/sec/android/app/sysscope/service/SysScope;
-
-    invoke-direct {v0, p0}, Lcom/sec/android/app/sysscope/service/SysScope;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/sec/bcservice/BroadcastService;->mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
-
-    .line 475
-    iget-object v0, p0, Lcom/sec/bcservice/BroadcastService;->mSysScope:Lcom/sec/android/app/sysscope/service/SysScope;
-
-    if-nez v0, :cond_12
-
-    .line 476
-    const-string v0, "BCService"
-
-    const-string v1, "mSysScope == null"
-
-    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 477
-    :cond_12
-    return-void
-.end method
 
 
 # virtual methods
@@ -1333,7 +1110,6 @@
     .line 107
     .end local v0           #thread:Ljava/lang/Thread;
     :cond_2c
-    invoke-direct {p0}, Lcom/sec/bcservice/BroadcastService;->startSysScopeStatue()V
 
     .line 108
     invoke-virtual {p0}, Lcom/sec/bcservice/BroadcastService;->startReceiver()V

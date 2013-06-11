@@ -521,7 +521,6 @@
 .end method
 
 <<<<<<< HEAD
-=======
 .method private changeSysScopeStatus()V
     .registers 2
 
@@ -549,7 +548,8 @@
     .line 862
     return-void
 .end method
->>>>>>> aa7a593f950b050d2954b70fb7230159dd5f2471
+=======
+>>>>>>> SysScope Cleanup
 
 .method private connectToRilService()V
     .registers 4
