@@ -877,7 +877,6 @@
 
     move-object/from16 v26, v0
 
-    #calls: Lcom/sec/bcservice/BroadcastService;->getSysScopeStatus()Ljava/lang/String;
     invoke-static/range {v26 .. v26}, Lcom/sec/bcservice/BroadcastService;->access$1000(Lcom/sec/bcservice/BroadcastService;)Ljava/lang/String;
 
     move-result-object v26

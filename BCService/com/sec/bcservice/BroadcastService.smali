@@ -48,9 +48,7 @@
 
 .field private intentTimer:Landroid/os/Handler;
 
-
 .field public mBroadcastReceiver:Landroid/content/BroadcastReceiver;
-
 
 .field private out:Ljava/io/OutputStream;
 
@@ -199,7 +197,6 @@
 
     return-object v0
 .end method
-
 
 .method static synthetic access$102(Lcom/sec/bcservice/BroadcastService;Landroid/net/LocalSocket;)Landroid/net/LocalSocket;
     .registers 2
@@ -708,13 +705,11 @@
     goto :goto_75
 .end method
 
-
 .method private initCommandMap()V
     .registers 4
 
     .prologue
     .line 599
-
     .line 600
     iget-object v0, p0, Lcom/sec/bcservice/BroadcastService;->commandMap:Ljava/util/HashMap;
 
@@ -781,7 +776,6 @@
     .line 607
     return-void
 .end method
-
 
 
 # virtual methods
@@ -1108,10 +1102,9 @@
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
     .line 107
+    .line 108
     .end local v0           #thread:Ljava/lang/Thread;
     :cond_2c
-
-    .line 108
     invoke-virtual {p0}, Lcom/sec/bcservice/BroadcastService;->startReceiver()V
 
     .line 110

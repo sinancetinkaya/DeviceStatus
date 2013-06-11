@@ -789,7 +789,6 @@
     sget v0, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
 
     return v0
-
 .end method
 
 .method public static xdmGetAccountRegistration(Landroid/content/Context;)Z

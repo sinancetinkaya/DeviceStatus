@@ -1251,7 +1251,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3d5
+    if-eqz v0, :cond_3c9
 
     .line 186
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
@@ -1305,7 +1305,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3e3
+    if-eqz v0, :cond_3d7
 
     .line 199
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
@@ -1403,7 +1403,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3f1
+    if-eqz v0, :cond_3e5
 
     .line 217
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
@@ -1651,7 +1651,7 @@
     .line 287
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
 
-     const-string v1, "AT+FLCRFCAL"
+    const-string v1, "AT+FLCRFCAL"
 
     new-instance v2, Lcom/sec/factory/aporiented/athandler/AtFeliCaRfCal;
 
@@ -1668,7 +1668,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_398
+    if-eqz v0, :cond_38c
 
     .line 291
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
@@ -1682,7 +1682,7 @@
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 293
-    :cond_398
+    :cond_38c
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
 
     const-string v1, "AT+HUMITEMP"
@@ -1741,7 +1741,7 @@
     return-void
 
     .line 190
-    :cond_3d5
+    :cond_3c9
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
 
     const-string v1, "AT+FCEPTEST"
@@ -1755,7 +1755,7 @@
     goto/16 :goto_1d7
 
     .line 203
-    :cond_3e3
+    :cond_3d7
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
 
     const-string v1, "AT+LOOPTEST"
@@ -1769,7 +1769,7 @@
     goto/16 :goto_20f
 
     .line 219
-    :cond_3f1
+    :cond_3e5
     const-string v0, "TSP_MANUFACTURE"
 
     invoke-static {v0}, Lcom/sec/factory/support/Support$Feature;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -1782,7 +1782,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_40d
+    if-eqz v0, :cond_401
 
     .line 220
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
@@ -1798,7 +1798,7 @@
     goto/16 :goto_277
 
     .line 222
-    :cond_40d
+    :cond_401
     iget-object v0, p0, Lcom/sec/factory/aporiented/AtParser;->atHandlers:Ljava/util/HashMap;
 
     const-string v1, "AT+TSPPTEST"
