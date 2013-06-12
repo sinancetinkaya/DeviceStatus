@@ -22,3 +22,5 @@ E.g. for SecSettings.apk
   java -Xmx1024M -jar smali-1.4.2.jar -a 16 SecSettings -o classes.dex
   
 6. Add compiled classes.dex file into SecSettings.apk
+
+After you modify all apks, you should delete SysScope.apk and EdmSysScopeService.apk
