@@ -198,6 +198,19 @@
     return-object v0
 .end method
 
+.method static synthetic access$1000(Lcom/sec/bcservice/BroadcastService;)Ljava/lang/String;
+    .registers 2
+    .parameter "x0"
+
+    .prologue
+    .line 70
+    invoke-direct {p0}, Lcom/sec/bcservice/BroadcastService;->getSysScopeStatus()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method static synthetic access$102(Lcom/sec/bcservice/BroadcastService;Landroid/net/LocalSocket;)Landroid/net/LocalSocket;
     .registers 2
     .parameter "x0"
@@ -705,11 +718,34 @@
     goto :goto_75
 .end method
 
+.method private getSysScopeStatus()Ljava/lang/String;
+    .registers 2
+
+    .prologue
+    const v0, 0x7f030003
+
+    .line 644
+    invoke-virtual {p0, v0}, Lcom/sec/bcservice/BroadcastService;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 662
+    return-object v1
+.end method
+
 .method private initCommandMap()V
     .registers 4
 
     .prologue
     .line 599
+    iget-object v0, p0, Lcom/sec/bcservice/BroadcastService;->commandMap:Ljava/util/HashMap;
+
+    const-string v1, "SYSSCOPE"
+
+    const-string v2, "AT+SYSSCOPE"
+
+    invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
     .line 600
     iget-object v0, p0, Lcom/sec/bcservice/BroadcastService;->commandMap:Ljava/util/HashMap;
 
