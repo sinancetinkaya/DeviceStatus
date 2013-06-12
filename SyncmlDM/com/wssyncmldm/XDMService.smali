@@ -168,7 +168,7 @@
     sput-boolean v0, Lcom/wssyncmldm/XDMService;->XDM_SYSTEM_ROOTING:Z
 
     .line 106
-    sput v2, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
+    sput v0, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
 
     .line 117
     sput v0, Lcom/wssyncmldm/XDMService;->m_nCallState:I
@@ -774,14 +774,14 @@
 .end method
 
 .method public static xdmCheckSystemRooting()I
-    .registers 1
+    .registers 2
 
     .prologue
     const/4 v0, 0x0
 
+    .line 1807
     sput v0, Lcom/wssyncmldm/XDMService;->g_nSysScopeState:I
 
-    .line 1807
     const-string v0, "Device is ok"
 
     invoke-static {v0}, Lcom/wssyncmldm/agent/XDMDebug;->XDM_DEBUG_EXCEPTION(Ljava/lang/String;)V
