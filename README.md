@@ -1,4 +1,4 @@
-DeviceStatus
+SysScopeFix
 ============
 
 Source files are from XXDME1
@@ -12,7 +12,7 @@ You need to compile Classes.dex for each apk
 
 E.g. for SecSettings.apk
 
-1. I'm assuming Java JDK or JRE installed on yout PC
+1. I'm assuming Java JDK or JRE installed on your PC
 
 2. Download smali-1.4.2.jar from apktool project page
 
@@ -29,12 +29,14 @@ E.g. for SecSettings.apk
 After you modify all apks, you should delete SysScope.apk and EdmSysScopeService.apk
 
 ===========================
-For those on other variants of the Note II, you can use the changes done here as a template to modify your own build/model-specific files.
+
+### For those on other variants of the Note II, 
+You can use the changes done here as a template to modify your own build/model-specific files.
 
 To get at your own files in a format similar to that seen here, do the following:
 
 1. You will need to be DEODEXED - this GREATLY simplifies things
-2. I'm assuming Java JDK or JRE installed on yout PC
+2. I'm assuming Java JDK or JRE installed on your PC
 3. Open up the .apk you are trying to modify (it's just a glorified compressed file, so 7zip/winzip/insert-compression-utility-here should work) and pull out the classes.dex
 4. Download baksmali-1.4.2.jar from apktool project page
 5. Type some variant of this command
